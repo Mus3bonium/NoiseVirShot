@@ -1,4 +1,5 @@
 import numpy as np
+import tqdm
 
 def correlate_chunk(data, virTr=1, dt=None):
 
