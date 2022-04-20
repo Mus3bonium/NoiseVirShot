@@ -1,5 +1,6 @@
 import numpy as np
 import tqdm
+import matplotlib.pyplot as plt
 
 def correlate_chunk(data, virTr=1, dt=None):
 
@@ -70,6 +71,7 @@ def stack_chunks(corr_chunks, dt=0.008, method='Linear'):
 
 
 def plot_stack(data, dt=None, clim=1e6, **kwargs):
+
     
     nt,nx = data.shape
     
@@ -105,7 +107,7 @@ def plot_stack(data, dt=None, clim=1e6, **kwargs):
     plt.xlabel(xlabel)
 
 def NoiseVirShot(data, virTr=1, dt=None, chunk_size=3, stacking_method='Linear'):
-'''
+    '''
     correlated_stack = NoiseVirShot(data, virTr=1, dt=None, chunk_size=3, stacking_method='Linear')
 
     Input:
@@ -122,10 +124,11 @@ def NoiseVirShot(data, virTr=1, dt=None, chunk_size=3, stacking_method='Linear')
     Output:
 
         Correlated_stack: result of x-correlation
-'''
+    '''
+
 
     
-    chunks = correlate_allchunks(data,VirTr, dt=dt, chunk_size=chunk_size)
-    stack  = stack_chunks(chunks, Method=stacking_method)
+    chunks = correlate_allchunks(data,virTr, dt=dt, chunk_size=chunk_size)
+    stack  = stack_chunks(chunks, method=stacking_method)
     
     return stack
